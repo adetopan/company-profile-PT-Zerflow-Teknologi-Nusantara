@@ -1,0 +1,382 @@
+/* Profil perusahaan — tampilan kertas A4, siap cetak */
+
+:root {
+  --cp-ink: #1a1a1a;
+  --cp-ink-soft: #444444;
+  --cp-line: #d4d4d8;
+  --cp-line-strong: #a1a1aa;
+  --cp-brand: #1565a8;
+  --cp-brand-dark: #0c4a6e;
+  --cp-paper: #ffffff;
+  --cp-screen: #e8eaed;
+  --cp-font: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body {
+  margin: 0;
+  font-family: var(--cp-font);
+  font-size: 10.5pt;
+  line-height: 1.55;
+  color: var(--cp-ink);
+  background: var(--cp-screen);
+}
+
+/* Toolbar — hanya di layar */
+.cp-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.65rem 1.25rem;
+  background: #fff;
+  border-bottom: 1px solid var(--cp-line);
+  font-size: 0.875rem;
+}
+
+.cp-toolbar-link {
+  color: var(--cp-brand);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.cp-toolbar-link:hover {
+  text-decoration: underline;
+}
+
+.cp-toolbar-btn {
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--cp-line-strong);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--cp-ink);
+  cursor: pointer;
+}
+
+.cp-toolbar-btn:hover {
+  background: #f4f4f5;
+}
+
+.cp-preview {
+  padding: 1.5rem 1rem 2.5rem;
+}
+
+.cp-paper {
+  max-width: 210mm;
+  margin: 0 auto;
+  background: var(--cp-paper);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 12px 40px rgba(0, 0, 0, 0.06);
+  padding: 0;
+}
+
+/* Halaman depan */
+.cp-front {
+  position: relative;
+  min-height: 240mm;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--cp-line);
+  page-break-after: always;
+}
+
+.cp-front-accent {
+  height: 6mm;
+  background: var(--cp-brand-dark);
+}
+
+.cp-front-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 18mm 22mm 22mm;
+}
+
+.cp-logo-wrap {
+  padding: 10px 14px;
+  background: #f4f4f5;
+  border: 1px solid var(--cp-line);
+  margin-bottom: 14mm;
+}
+
+.cp-logo-wrap img {
+  display: block;
+  width: 100%;
+  max-width: 72mm;
+  height: auto;
+}
+
+.cp-doc-type {
+  margin: 0;
+  font-size: 9pt;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cp-brand);
+}
+
+.cp-company-name {
+  margin: 6px 0 0;
+  font-size: 20pt;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--cp-ink);
+  letter-spacing: -0.01em;
+}
+
+.cp-tagline-en {
+  margin: 8px 0 0;
+  font-size: 10pt;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--cp-ink-soft);
+}
+
+.cp-front-facts {
+  margin: 16mm 0 0;
+  padding: 0;
+  width: 100%;
+  max-width: 120mm;
+  border-top: 1px solid var(--cp-line);
+  padding-top: 8mm;
+  display: grid;
+  gap: 4mm;
+  text-align: left;
+}
+
+.cp-front-facts div {
+  display: grid;
+  grid-template-columns: 32mm 1fr;
+  gap: 4mm;
+  font-size: 9.5pt;
+}
+
+.cp-front-facts dt {
+  margin: 0;
+  font-weight: 600;
+  color: var(--cp-ink-soft);
+}
+
+.cp-front-facts dd {
+  margin: 0;
+  color: var(--cp-ink);
+}
+
+/* Isi dokumen */
+.cp-section {
+  padding: 10mm 22mm;
+  border-bottom: 1px solid var(--cp-line);
+}
+
+.cp-section:last-of-type {
+  border-bottom: none;
+}
+
+.cp-section-title {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0 0 5mm;
+  font-size: 11pt;
+  font-weight: 700;
+  color: var(--cp-brand-dark);
+  border-bottom: 2px solid var(--cp-brand);
+  padding-bottom: 2mm;
+}
+
+.cp-section-title span {
+  font-size: 10pt;
+  font-weight: 700;
+  color: var(--cp-brand);
+  min-width: 1.5em;
+}
+
+.cp-lead {
+  font-size: 10.5pt;
+  color: var(--cp-ink);
+  margin: 0 0 4mm;
+}
+
+.cp-section p {
+  margin: 0 0 3mm;
+  color: var(--cp-ink-soft);
+  text-align: justify;
+}
+
+.cp-section p:last-child {
+  margin-bottom: 0;
+}
+
+.cp-quote {
+  margin: 0;
+  padding: 4mm 5mm;
+  border-left: 3px solid var(--cp-brand);
+  background: #f8fafc;
+  color: var(--cp-ink);
+  font-size: 10.5pt;
+  text-align: left;
+}
+
+.cp-section-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8mm;
+}
+
+.cp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9.5pt;
+}
+
+.cp-table th,
+.cp-table td {
+  border: 1px solid var(--cp-line);
+  padding: 2.5mm 3.5mm;
+  vertical-align: top;
+  text-align: left;
+}
+
+.cp-table tbody th {
+  width: 38%;
+  font-weight: 600;
+  background: #f8fafc;
+  color: var(--cp-ink-soft);
+}
+
+.cp-table-services thead th {
+  background: var(--cp-brand-dark);
+  color: #fff;
+  font-weight: 600;
+  font-size: 9pt;
+}
+
+.cp-table-services tbody td:first-child {
+  font-weight: 600;
+  width: 28%;
+  background: #fafafa;
+  color: var(--cp-ink);
+}
+
+.cp-list {
+  margin: 0;
+  padding-left: 5mm;
+  color: var(--cp-ink-soft);
+}
+
+.cp-list li {
+  margin-bottom: 2mm;
+  padding-left: 1mm;
+}
+
+.cp-list li:last-child {
+  margin-bottom: 0;
+}
+
+.cp-list-check {
+  list-style: none;
+  padding-left: 0;
+}
+
+.cp-list-check li {
+  position: relative;
+  padding-left: 5mm;
+}
+
+.cp-list-check li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--cp-brand);
+  font-weight: 600;
+}
+
+.cp-doc-footer {
+  padding: 8mm 22mm 12mm;
+  text-align: center;
+  font-size: 9pt;
+  color: var(--cp-ink-soft);
+  border-top: 1px solid var(--cp-line);
+}
+
+.cp-doc-footer p {
+  margin: 0 0 2mm;
+}
+
+.cp-doc-footer-note {
+  font-size: 8pt;
+  color: var(--cp-line-strong);
+}
+
+@media (max-width: 720px) {
+  .cp-section-split {
+    grid-template-columns: 1fr;
+  }
+
+  .cp-front {
+    min-height: auto;
+  }
+
+  .cp-section {
+    padding: 8mm 6mm;
+  }
+
+  .cp-front-body {
+    padding: 12mm 6mm;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .cp-preview {
+    padding: 0;
+  }
+
+  .cp-paper {
+    max-width: none;
+    box-shadow: none;
+  }
+
+  .cp-front {
+    min-height: 297mm;
+  }
+
+  .cp-section {
+    page-break-inside: avoid;
+  }
+
+  .cp-table {
+    page-break-inside: auto;
+  }
+
+  .cp-table tr {
+    page-break-inside: avoid;
+  }
+}
