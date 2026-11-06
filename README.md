@@ -63,6 +63,56 @@ public/assets/          logo, icon, SK AHU PDF, company profile cetak
 vite.config.js          Konfigurasi dev/build
 ```
 
-## Deploy
+## Deploy (GitHub + Vercel + domain)
 
-Unggah folder ke hosting statis (Netlify, Vercel, GitHub Pages, cPanel) dengan `index.html` sebagai entry point.
+**Repo:** [adetopan/company-profile-PT-Zerflow-Teknologi-Nusantara](https://github.com/adetopan/company-profile-PT-Zerflow-Teknologi-Nusantara)  
+**Domain:** `zerflowteknologi.com`
+
+### 1. Push kode terbaru
+
+```bash
+nvm use 24
+cd "D:\Company Profile Zerflow Teknologi Nusantara"
+git add .
+git commit -m "Siap deploy production"
+git push origin main
+```
+
+### 2. Hubungkan ke Vercel
+
+1. Login [vercel.com](https://vercel.com) (bisa pakai akun GitHub).
+2. **Add New → Project** → import repo `company-profile-PT-Zerflow-Teknologi-Nusantara`.
+3. Pastikan setting build:
+   - **Framework Preset:** Vite  
+   - **Build Command:** `npm run build`  
+   - **Output Directory:** `dist`  
+   (Sudah diringkas di `vercel.json`.)
+4. **Deploy** — situs live di `*.vercel.app`.
+
+### 3. Pasang domain `zerflowteknologi.com`
+
+Di Vercel: **Project → Settings → Domains** → tambahkan:
+
+- `zerflowteknologi.com`
+- `www.zerflowteknologi.com`
+
+Vercel menampilkan DNS yang harus diisi. Umumnya di panel domain (tempat Anda beli domain):
+
+| Host | Tipe | Nilai (contoh Vercel) |
+|------|------|------------------------|
+| `@` | **A** | `76.76.21.21` |
+| `www` | **CNAME** | `cname.vercel-dns.com` |
+
+Atau ganti **nameserver** domain ke nameserver Vercel jika registrar mendukung (paling mudah).
+
+Propagasi DNS biasanya 5 menit–48 jam. Di Vercel, set **redirect** `www` → apex (atau sebaliknya) sesuai preferensi.
+
+### 4. Setelah live
+
+- Buka `https://zerflowteknologi.com` dan cek formulir kontak + company profile.
+- (Opsional) Di Vercel aktifkan **HTTPS** otomatis (default sudah on).
+
+### Alternatif
+
+- **Netlify:** drag & drop folder `dist` setelah `npm run build`, lalu custom domain sama seperti di atas.
+- **Cloudflare Pages:** connect GitHub, build `npm run build`, publish directory `dist`.
