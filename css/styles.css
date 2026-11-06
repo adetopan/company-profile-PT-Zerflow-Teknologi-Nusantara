@@ -727,6 +727,44 @@ a:hover {
   transform: rotate(-45deg);
 }
 
+.zerflow-meaning {
+  margin: 1.25rem 0 1.5rem;
+  padding: 1.15rem 1.25rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  background: rgba(15, 23, 42, 0.45);
+}
+
+.zerflow-meaning-lead {
+  margin: 0 0 0.75rem;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.zerflow-parts {
+  margin: 0 0 0.85rem;
+  padding-left: 1.15rem;
+  color: var(--text-muted);
+}
+
+.zerflow-parts li {
+  margin-bottom: 0.45rem;
+}
+
+.zerflow-parts strong {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.zerflow-meaning-note {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--border);
+}
+
 .founder-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -736,18 +774,16 @@ a:hover {
   box-shadow: var(--shadow);
 }
 
-.founder-avatar {
-  width: 64px;
-  height: 64px;
-  border-radius: 16px;
-  display: grid;
-  place-items: center;
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 1.1rem;
-  background: var(--gradient);
-  color: #0f172a;
+.founder-photo {
+  display: block;
+  width: 100%;
+  max-height: 320px;
+  object-fit: cover;
+  object-position: center 15%;
+  border-radius: var(--radius-sm);
   margin-bottom: 1.25rem;
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
 }
 
 .founder-card h3 {
