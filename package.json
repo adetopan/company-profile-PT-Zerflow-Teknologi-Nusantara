@@ -3,6 +3,9 @@
   "private": true,
   "version": "1.0.0",
   "description": "Landing page & portofolio PT Zerflow Teknologi Nusantara",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",

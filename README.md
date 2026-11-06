@@ -78,16 +78,20 @@ git commit -m "Siap deploy production"
 git push origin main
 ```
 
-### 2. Hubungkan ke Vercel
+### 2. Hubungkan ke Vercel (penting)
 
-1. Login [vercel.com](https://vercel.com) (bisa pakai akun GitHub).
-2. **Add New → Project** → import repo `company-profile-PT-Zerflow-Teknologi-Nusantara`.
-3. Pastikan setting build:
-   - **Framework Preset:** Vite  
-   - **Build Command:** `npm run build`  
-   - **Output Directory:** `dist`  
-   (Sudah diringkas di `vercel.json`.)
-4. **Deploy** — situs live di `*.vercel.app`.
+Halaman hitam dengan kotak **“Send a message…”** **bukan** website Zerflow — itu template/proyek AI Vercel atau deploy yang salah.
+
+1. Login [vercel.com](https://vercel.com) → **Add New → Project**.
+2. Pilih **Import Git Repository** → repo **`adetopan/company-profile-PT-Zerflow-Teknologi-Nusantara`** (bukan “Deploy template” / v0).
+3. **Root Directory:** kosong (`.`), bukan subfolder lain.
+4. **Framework Preset:** **Vite**
+5. **Build Command:** `npm run build` · **Output Directory:** `dist`
+6. **Node.js Version:** **20.x** (Settings → General, atau pakai file `.nvmrc` di repo).
+7. Klik **Deploy** → tunggu status **Ready** (hijau).
+8. Buka URL deployment dari tab **Deployments** — harus tampil landing biru gelap Zerflow, bukan chat.
+
+Jika masih salah: hapus proyek Vercel yang lama → buat proyek baru hanya dari GitHub repo di atas.
 
 ### 3. Pasang domain `zerflowteknologi.com`
 
